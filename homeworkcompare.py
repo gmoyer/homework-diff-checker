@@ -1,6 +1,3 @@
-import difflib
-import re
-import sys
 import os
 
 
@@ -51,13 +48,6 @@ def listInsert(l, x):
     while i < len(l) and l[i][0] < x[0]:
         i += 1
     l.insert(i, x)
-
-
-#with open('hirschlauren_9552_1267170_hw5-1.py') as file1:
-#    text1 = file1.readlines()
-
-#with open('lowelukas_9473_1267525_hw_05.py') as file2:
-#    text2 = file2.readlines()
 
 path = input("Enter directory to compare: ")
 
