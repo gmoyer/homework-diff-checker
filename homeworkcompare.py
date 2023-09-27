@@ -4,6 +4,13 @@ import os
 #I compare each line with its most similar line, and add up all the of the differences between them
 #This scores two rearranged codes as the same
 def listdiff(a, b):
+
+    if len(a) > len(b): #swap so smaller gets compared to larger
+        temp = a
+        a = b
+        b = temp
+
+    
     total = 0
     for i in range(len(a)):
         rowbest = float('inf')
@@ -33,11 +40,6 @@ def linediff(a, b):
                 d[i][j-1] + 1, #insertion
                 d[i-1][j-1] + cost #subsitution
                 )
-            if i > 1 and j > 1 and a[i-1] == b[j-2] and a[i-2] == b[j-1]:
-                d[i][j]= min(
-                    d[i][j], #the same if the other doesn't make it better
-                    d[i-2][j-2] + 1 #transposition
-                    )
     return d[n][m]
 
 def listInsert(l, x):
@@ -51,7 +53,7 @@ def listInsert(l, x):
 
 path = input("Enter directory to compare: ")
 
-directory = [(file, open(os.path.join(path, file)).readlines()) for file in os.listdir(path)]
+directory = [(file, [item.replace(" ", "") for item in open(os.path.join(path, file)).readlines() if item != '\n']) for file in os.listdir(path)]
 
 out = []
 
