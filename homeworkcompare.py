@@ -5,17 +5,19 @@ import os
 #This scores two rearranged codes as the same
 def listdiff(a, b):
 
-    if len(a) > len(b): #swap so smaller gets compared to larger
-        temp = a
-        a = b
-        b = temp
+    if len(a) > len(b): #swap so larger gets compared to smaller
+        list1 = a
+        list2 = b
+    else:
+        list1 = b
+        list2 = a
 
     
     total = 0
-    for i in range(len(a)):
+    for i in range(len(list1)):
         rowbest = float('inf')
-        for j in range(len(b)):
-            rowbest = min(rowbest, linediff(a[i], b[j]))
+        for j in range(len(list2)):
+            rowbest = min(rowbest, linediff(list1[i], list2[j]))
         total += rowbest
     return total
 
