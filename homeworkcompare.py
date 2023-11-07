@@ -55,7 +55,7 @@ def listInsert(l, x):
 
 path = input("Enter directory to compare: ")
 
-directory = [(file, [item.replace(" ", "") for item in open(os.path.join(path, file)).readlines() if item != '\n']) for file in os.listdir(path)]
+directory = [(file, [item.replace(" ", "") for item in open(os.path.join(path, file), encoding="utf8").readlines() if item != '\n']) for file in os.listdir(path)]
 
 out = []
 
